@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="dark">
 <head>
@@ -124,7 +123,7 @@
                             <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">إجباري</span>
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="numeric" id="rmbPriceInput" step="any" min="0" placeholder="0.00" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbPriceInput" step="any" min="0" placeholder="0.00" oninput="calculate()"
                                 class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
                             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold pointer-events-none">¥</span>
                         </div>
@@ -153,19 +152,19 @@
                                 <div id="dimInputs" class="grid grid-cols-3 gap-1.5 transition-slider transform translate-x-0 w-full">
                                     <div>
                                         <span class="text-[10px] text-slate-400 mb-0.5 block text-center">الطول (م)</span>
-                                        <input type="number" inputmode="numeric" id="lengthInput" step="any" placeholder="0.0" oninput="calculate()"
+                                        <input type="number" inputmode="decimal" pattern="[0-9]*" id="lengthInput" step="any" placeholder="0.0" oninput="calculate()"
                                             class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
 
                                     <div>
                                         <span class="text-[10px] text-slate-400 mb-0.5 block text-center">العرض (م)</span>
-                                        <input type="number" inputmode="numeric" id="widthInput" step="any" placeholder="0.0" oninput="calculate()"
+                                        <input type="number" inputmode="decimal" pattern="[0-9]*" id="widthInput" step="any" placeholder="0.0" oninput="calculate()"
                                             class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
 
                                     <div>
                                         <span class="text-[10px] text-slate-400 mb-0.5 block text-center">الارتفاع (م)</span>
-                                        <input type="number" inputmode="numeric" id="heightInput" step="any" placeholder="0.0" oninput="calculate()"
+                                        <input type="number" inputmode="decimal" pattern="[0-9]*" id="heightInput" step="any" placeholder="0.0" oninput="calculate()"
                                             class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
                                 </div>
@@ -173,7 +172,7 @@
                                 <!-- Option 2: Direct 1 Input -->
                                 <div id="directInput" class="hidden transition-slider transform translate-x-full absolute inset-0 flex items-center justify-center">
                                     <div class="w-full">
-                                        <input type="number" inputmode="numeric" id="fullCbmInput" step="any" placeholder="أدخل إجمالي CBM المباشر (مثلاً 0.25)" oninput="calculate()"
+                                        <input type="number" inputmode="decimal" pattern="[0-9]*" id="fullCbmInput" step="any" placeholder="أدخل إجمالي CBM المباشر (مثلاً 0.25)" oninput="calculate()"
                                             class="w-full bg-slate-950 text-amber-300 font-extrabold text-base rounded-xl p-2.5 text-center border border-amber-500/50 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
                                 </div>
@@ -194,7 +193,7 @@
                             <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">إجباري</span>
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="numeric" id="packagingInput" step="1" min="1" placeholder="1" oninput="calculate()" value="1"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="packagingInput" step="1" min="1" placeholder="1" oninput="calculate()" value="1"
                                 class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
                             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold pointer-events-none">قطعة</span>
                         </div>
@@ -305,7 +304,7 @@
                             سعر المتر (RMB)
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="numeric" id="meterPriceInput" step="any" placeholder="0" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="meterPriceInput" step="any" placeholder="0" oninput="calculate()"
                                 class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
@@ -316,7 +315,7 @@
                             سعر تصريف RMB
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="numeric" id="rmbTariffRateInput" step="any" placeholder="1" value="1" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbTariffRateInput" step="any" placeholder="1" value="1" oninput="calculate()"
                                 class="w-full bg-slate-950 text-amber-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
@@ -327,7 +326,7 @@
                             نسبة الربح (%)
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="numeric" id="profitPercentInput" step="any" placeholder="0" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="profitPercentInput" step="any" placeholder="0" oninput="calculate()"
                                 class="w-full bg-slate-950 text-emerald-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                             <span class="absolute left-2 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold">%</span>
                         </div>
@@ -339,7 +338,7 @@
                             سعر صرف 
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="numeric" id="rmbExchangeRateInput" step="any" placeholder="7.1" value="7.1" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbExchangeRateInput" step="any" placeholder="7.1" value="7.1" oninput="calculate()"
                                 class="w-full bg-slate-950 text-sky-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
@@ -350,7 +349,7 @@
                             سعر تصريف الدينار
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="numeric" id="dinarExchangeRateInput" step="any" placeholder="1500" value="1500" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="dinarExchangeRateInput" step="any" placeholder="1500" value="1500" oninput="calculate()"
                                 class="w-full bg-slate-950 text-purple-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
@@ -529,7 +528,50 @@
         window.onload = function() {
             calculate();
         };
+
+
+        /* =========================
+           AUTO MOVE TO NEXT INPUT
+           ========================= */
+
+        const inputs = [
+            document.getElementById('meterPriceInput'),
+            document.getElementById('rmbTariffRateInput'),
+            document.getElementById('profitPercentInput'),
+            document.getElementById('rmbExchangeRateInput')
+        ];
+
+        inputs.forEach((input, index) => {
+
+            input.setAttribute(
+                'enterkeyhint',
+                index < inputs.length - 1 ? 'next' : 'done'
+            );
+
+            input.addEventListener('keydown', function (event) {
+
+                if (
+                    event.key === 'Enter' ||
+                    event.keyCode === 13
+                ) {
+
+                    event.preventDefault();
+
+                    if (index < inputs.length - 1) {
+
+                        inputs[index + 1].focus();
+
+                    } else {
+
+                        this.blur();
+
+                    }
+
+                }
+
+            });
+
+        });
     </script>
 </body>
 </html>
-```
