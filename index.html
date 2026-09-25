@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حاسبة تكاليف الشحن والمنتجات الاحترافية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        slate: {
+                            850: '#0f172a',
+                            950: '#020617',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+        .transition-slider {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+        .glow-amber-box {
+            box-shadow: 0 0 25px -3px rgba(245, 158, 11, 0.25);
+        }
+        .glow-amber-focus:focus-within {
+            box-shadow: 0 0 25px 2px rgba(245, 158, 11, 0.4);
+        }
+        /* Hide Spinner on Number Inputs */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none;
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        /* Glassmorphism Card Style */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-12 pt-6 px-3 sm:px-6 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+
+    <div class="max-w-4xl mx-auto w-full space-y-6">
+        
+        <!-- Header Section -->
+        <header class="text-center space-y-2 relative">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold mb-1">
+                <i class="fa-solid fa-calculator"></i>
+                <span>النظام المالي المتقدم للشركات والتجار</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-black text-white tracking-wide">
+                حاسبة تكاليف الشحن والمنتجات <span class="text-amber-400 font-extrabold">(RMB / د.ع)</span>
+            </h1>
+            <p class="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto">
+                احسب تكاليف استيراد المنتجات باليوان الصيني، CBM، والنسب بالدينار بدقة ولحظياً.
+            </p>
+        </header>
+
+        <!-- Main Card Container -->
+        <main class="space-y-6">
+
+            <!-- 1. PRIMARY INPUTS SECTION -->
+            <div class="glass-panel rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden border-2 border-amber-500/30 glow-amber-box">
+                <div class="absolute -top-12 -left-12 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="flex items-center justify-between border-b border-slate-700/60 pb-3 mb-5">
+                    <div class="flex items-center gap-2">
+                        <span class="flex h-3 w-3 relative">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+                        </span>
+                        <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-star text-amber-400"></i>
+                            المدخلات الرئيسية المتغيرة
+                        </h2>
+                    </div>
+                    <!-- Reset Button for Primary Inputs Only -->
+                    <button onclick="resetPrimaryInputs()" 
+                            title="تصفير سعر القطعة، CBM والتعبئة فقط"
+                            class="group bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 hover:scale-105 active:scale-95 shadow-md">
+                        <i class="fa-solid fa-rotate-right transition-transform group-hover:-rotate-180 duration-500"></i>
+                        <span>تصفير الخانات الرئيسية</span>
+                    </button>
+                </div>
+
+                <!-- Grid for Prominent Primary Top Inputs -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    
+                    <!-- 1. RMB Product Price -->
+                    <div class="bg-slate-900/90 rounded-2xl p-4 border border-amber-500/40 glow-amber-focus transition-all">
+                        <label class="block text-amber-300 font-bold text-sm mb-2 flex items-center justify-between">
+                            <span><i class="fa-solid fa-tag text-amber-400 ml-1.5"></i>سعر القطعة (RMB)</span>
+                            <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">إجباري</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="rmbPriceInput" step="any" min="0" placeholder="0.00" oninput="calculate()"
+                                class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold pointer-events-none">¥</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2 text-center">السعر الأصلي للقطعة الواحدة باليوان الصيني</p>
+                    </div>
+
+                    <!-- 2. CBM Calculator Section -->
+                    <div class="bg-slate-900/90 rounded-2xl p-4 border border-amber-500/40 glow-amber-focus transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label class="text-amber-300 font-bold text-sm flex items-center gap-1.5">
+                                    <i class="fa-solid fa-cube text-amber-400"></i>
+                                    <span>الحجم المكعب (CBM)</span>
+                                </label>
+                                <!-- Toggle Mode Button -->
+                                <div class="bg-slate-950 p-1 rounded-xl border border-slate-800 flex text-[10px]">
+                                    <button id="toggleDimBtn" onclick="toggleCbmMode('dim')" class="px-2 py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950">أبعاد</button>
+                                    <button id="toggleDirectBtn" onclick="toggleCbmMode('direct')" class="px-2 py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all">مباشر</button>
+                                </div>
+                            </div>
+
+                            <!-- Input Options Container -->
+                            <div class="relative overflow-hidden min-h-[58px] mt-2">
+                                <!-- Option 1: 3 Inputs (طول × عرض × ارتفاع) -->
+                                <div id="dimInputs" class="grid grid-cols-3 gap-1.5 transition-slider transform translate-x-0 w-full">
+                                    <div>
+                                        <span class="text-[10px] text-slate-400 mb-0.5 block text-center">الطول (م)</span>
+                                        <input type="number" id="lengthInput" step="any" placeholder="0.0" oninput="calculate()"
+                                            class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] text-slate-400 mb-0.5 block text-center">العرض (م)</span>
+                                        <input type="number" id="widthInput" step="any" placeholder="0.0" oninput="calculate()"
+                                            class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] text-slate-400 mb-0.5 block text-center">الارتفاع (م)</span>
+                                        <input type="number" id="heightInput" step="any" placeholder="0.0" oninput="calculate()"
+                                            class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
+                                    </div>
+                                </div>
+
+                                <!-- Option 2: Direct 1 Input -->
+                                <div id="directInput" class="hidden transition-slider transform translate-x-full absolute inset-0 flex items-center justify-center">
+                                    <div class="w-full">
+                                        <input type="number" id="fullCbmInput" step="any" placeholder="أدخل إجمالي CBM المباشر (مثلاً 0.25)" oninput="calculate()"
+                                            class="w-full bg-slate-950 text-amber-300 font-extrabold text-base rounded-xl p-2.5 text-center border border-amber-500/50 focus:border-amber-500 focus:outline-none shadow-inner">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CBM Preview Summary -->
+                        <div class="mt-2 pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
+                            <span class="text-slate-400">إجمالي الحجم المحسوب:</span>
+                            <span class="font-bold text-amber-400 text-sm"><span id="calculatedCbmVal">0.0000</span> m³</span>
+                        </div>
+                    </div>
+
+                    <!-- 3. Packaging Quantity -->
+                    <div class="bg-slate-900/90 rounded-2xl p-4 border border-amber-500/40 glow-amber-focus transition-all">
+                        <label class="block text-amber-300 font-bold text-sm mb-2 flex items-center justify-between">
+                            <span><i class="fa-solid fa-boxes-packing text-amber-400 ml-1.5"></i>التعبئة (عدد القطع)</span>
+                            <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">إجباري</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="packagingInput" step="1" min="1" placeholder="1" oninput="calculate()" value="1"
+                                class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold pointer-events-none">قطعة</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-2 text-center">عدد القطع الإجمالي المحتواة في هذا الحجم/الكرتون</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. DIRECT RESULTS & FINAL COST SECTION -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-base font-extrabold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-amber-400"></i>
+                        نتائج الحساب والتكلفة النهائية مباشرةً
+                    </h3>
+                    <button onclick="copySummary()" 
+                            class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 active:scale-95">
+                        <i class="fa-solid fa-copy text-amber-400"></i>
+                        <span>نسخ التقرير</span>
+                    </button>
+                </div>
+
+                <!-- Primary Highlight Card (Dinar Final Cost) -->
+                <div class="bg-gradient-to-br from-amber-500/20 via-slate-900 to-slate-950 rounded-3xl p-6 border-2 border-amber-500/60 shadow-2xl relative overflow-hidden text-center glow-amber-box">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <span class="text-xs sm:text-sm font-extrabold text-amber-400 uppercase tracking-widest block mb-1">التكلفة النهائية للقطعة الواحدة</span>
+                    <div class="text-3xl sm:text-5xl font-black text-white tracking-tight my-2">
+                        <span id="finalCostDinar">0</span> <span class="text-amber-400 text-xl sm:text-3xl font-bold">د.ع</span>
+                    </div>
+                    <p class="text-slate-400 text-xs max-w-md mx-auto mt-1">
+                        تعتمد على المعادلة المباشرة المحددة بدقة محولة للدينار.
+                    </p>
+                </div>
+
+                <!-- Breakdown Cards (2 Cards) -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    
+                    <!-- Card 1: Unit Shipping Cost -->
+                    <div class="glass-panel p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
+                            <span>تكلفة شحن القطعة الواحدة</span>
+                            <i class="fa-solid fa-truck-fast text-sky-400"></i>
+                        </div>
+                        <div class="text-xl font-black text-sky-400">
+                            <span id="shippingCostPerUnit">0.00</span> <span class="text-xs">RMB</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 mt-1">
+                            (سعر المتر × CBM) ÷ التعبئة
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Shipping Cost after RMB Rate -->
+                    <div class="glass-panel p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                        <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
+                            <span>تكلفة شحن القطعة × سعر التصريف</span>
+                            <i class="fa-solid fa-coins text-amber-400"></i>
+                        </div>
+                        <div class="text-xl font-black text-amber-300">
+                            <span id="shipWithTariffCost">0.00</span> <span class="text-xs">RMB</span>
+                        </div>
+                        <div class="text-[10px] text-slate-500 mt-1">
+                            تكلفة شحن القطعة × سعر التصريف (RMB)
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Batch / Full Shipment Summary Container -->
+                <div class="glass-panel rounded-2xl p-4 border border-slate-800/80">
+                    <h4 class="text-xs font-bold text-slate-400 mb-3 flex items-center gap-1.5">
+                        <i class="fa-solid fa-boxes-stacked text-amber-400"></i>
+                        ملخص الشحنة الكاملة (لكل القطع - عدد <span id="summaryPackagingCount" class="text-white font-bold">1</span> قطعة):
+                    </h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
+                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block mb-0.5">إجمالي تكلفة الشحن</span>
+                            <span class="text-sm font-bold text-sky-400" id="batchTotalShipping">0.00 RMB</span>
+                        </div>
+                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block mb-0.5">إجمالي شراء BATCH</span>
+                            <span class="text-sm font-bold text-amber-300" id="batchTotalProductCost">0.00 RMB</span>
+                        </div>
+                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800 col-span-2 sm:col-span-1">
+                            <span class="text-[11px] text-slate-400 block mb-0.5">الإجمالي الكلي بالدينار</span>
+                            <span class="text-sm font-bold text-purple-300" id="batchTotalDinar">0 د.ع</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 3. RATES AND FREIGHT SETTINGS SECTION -->
+            <div class="glass-panel rounded-3xl p-4 sm:p-6 shadow-xl space-y-4">
+                <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
+                    <i class="fa-solid fa-sliders text-slate-400"></i>
+                    <h3 class="text-sm sm:text-base font-bold text-slate-200">إعدادات أسعار الصرف ونسبة الشحن والربح</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
+                    
+                    <!-- Freight Rate per Meter -->
+                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                            سعر المتر (RMB)
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="meterPriceInput" step="any" placeholder="0" oninput="calculate()"
+                                class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- RMB Tariff Rate (سعر تصريف RMB) -->
+                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                            سعر تصريف RMB
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="rmbTariffRateInput" step="any" placeholder="1" value="1" oninput="calculate()"
+                                class="w-full bg-slate-950 text-amber-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Profit Percentage -->
+                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                            نسبة الربح (%)
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="profitPercentInput" step="any" placeholder="0" oninput="calculate()"
+                                class="w-full bg-slate-950 text-emerald-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                            <span class="absolute left-2 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold">%</span>
+                        </div>
+                    </div>
+
+                    <!-- RMB Exchange Rate -->
+                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                            سعر صرف RMB
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="rmbExchangeRateInput" step="any" placeholder="7.1" value="7.1" oninput="calculate()"
+                                class="w-full bg-slate-950 text-sky-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Local Dinar Exchange Rate -->
+                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all col-span-2 md:col-span-1">
+                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                            سعر تصريف الدينار
+                        </label>
+                        <div class="relative">
+                            <input type="number" id="dinarExchangeRateInput" step="any" placeholder="1500" value="1500" oninput="calculate()"
+                                class="w-full bg-slate-950 text-purple-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Notification Toast -->
+        <div id="toast" class="fixed bottom-5 right-5 left-5 sm:left-auto sm:w-80 bg-slate-800 text-white p-3.5 rounded-2xl border border-amber-500/40 shadow-2xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none z-50">
+            <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
+            <span id="toastMsg" class="text-xs font-bold">تم التحديث بنجاح</span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-slate-600 text-xs pt-4 border-t border-slate-900">
+            <p>© 2026 حاسبة تكاليف الشحن والمنتجات - مصممة برمجياً بأعلى جودة لمتابعة حسابات التجار.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // CBM Input Mode State ('dim' or 'direct')
+        let cbmMode = 'dim';
+
+        /**
+         * Toggles between Dimensions input (LxWxH) and Direct CBM input
+         */
+        function toggleCbmMode(mode) {
+            cbmMode = mode;
+            const dimInputs = document.getElementById('dimInputs');
+            const directInput = document.getElementById('directInput');
+            const toggleDimBtn = document.getElementById('toggleDimBtn');
+            const toggleDirectBtn = document.getElementById('toggleDirectBtn');
+
+            if (mode === 'dim') {
+                dimInputs.classList.remove('hidden', 'translate-x-full');
+                dimInputs.classList.add('translate-x-0');
+                directInput.classList.add('hidden', 'translate-x-full');
+                
+                toggleDimBtn.className = "px-2 py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950";
+                toggleDirectBtn.className = "px-2 py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all";
+            } else {
+                dimInputs.classList.add('hidden', 'translate-x-full');
+                directInput.classList.remove('hidden', 'translate-x-full');
+                directInput.classList.add('translate-x-0');
+
+                toggleDirectBtn.className = "px-2 py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950";
+                toggleDimBtn.className = "px-2 py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all";
+            }
+            calculate();
+        }
+
+        /**
+         * Real-time Main Calculation Logic
+         */
+        function calculate() {
+            // Inputs
+            const rmbPrice = parseFloat(document.getElementById('rmbPriceInput').value) || 0;
+            const packaging = parseFloat(document.getElementById('packagingInput').value) || 1;
+
+            // Compute CBM
+            let calculatedCbm = 0;
+            if (cbmMode === 'dim') {
+                const length = parseFloat(document.getElementById('lengthInput').value) || 0;
+                const width = parseFloat(document.getElementById('widthInput').value) || 0;
+                const height = parseFloat(document.getElementById('heightInput').value) || 0;
+                calculatedCbm = length * width * height;
+            } else {
+                calculatedCbm = parseFloat(document.getElementById('fullCbmInput').value) || 0;
+            }
+
+            // Display CBM Preview
+            document.getElementById('calculatedCbmVal').innerText = calculatedCbm.toFixed(4);
+
+            // Fetch Rates and Settings
+            const meterPrice = parseFloat(document.getElementById('meterPriceInput').value) || 0;
+            const rmbTariffRate = parseFloat(document.getElementById('rmbTariffRateInput').value) || 1;
+            const profitPercent = parseFloat(document.getElementById('profitPercentInput').value) || 0;
+            const rmbExchangeRate = parseFloat(document.getElementById('rmbExchangeRateInput').value) || 1;
+            const dinarExchangeRate = parseFloat(document.getElementById('dinarExchangeRateInput').value) || 0;
+
+            const validPackaging = packaging > 0 ? packaging : 1;
+
+            // 1. تكلفة شحن القطعة = (سعر المتر * CBM) / التعبئة
+            const totalShipmentShippingCost = meterPrice * calculatedCbm;
+            const shippingCostPerUnit = totalShipmentShippingCost / validPackaging;
+
+            // 2. تطبيق المعادلة المطلوبة:
+            // ((تكلفة كل قطعة شحن * سعر التصريف RMB) + سعر القطعة RMB + نسبة الربح) / سعر الصرف RMB * سعر تصريف الدينار
+            const shipWithTariff = shippingCostPerUnit * rmbTariffRate;
+            const subtotalRmb = shipWithTariff + rmbPrice + profitPercent;
+
+            let finalDinarCost = 0;
+            if (rmbExchangeRate > 0) {
+                finalDinarCost = (subtotalRmb / rmbExchangeRate) * dinarExchangeRate;
+            }
+
+            // Render Output Values
+            document.getElementById('shippingCostPerUnit').innerText = shippingCostPerUnit.toFixed(2);
+            document.getElementById('shipWithTariffCost').innerText = shipWithTariff.toFixed(2);
+            document.getElementById('finalCostDinar').innerText = Math.round(finalDinarCost).toLocaleString('ar-IQ');
+
+            // Render Batch Totals
+            document.getElementById('summaryPackagingCount').innerText = validPackaging;
+            document.getElementById('batchTotalShipping').innerText = totalShipmentShippingCost.toFixed(2) + " RMB";
+            document.getElementById('batchTotalProductCost').innerText = (rmbPrice * validPackaging).toFixed(2) + " RMB";
+            
+            const batchTotalDinarVal = finalDinarCost * validPackaging;
+            document.getElementById('batchTotalDinar').innerText = Math.round(batchTotalDinarVal).toLocaleString('ar-IQ') + " د.ع";
+        }
+
+        /**
+         * Resets ONLY Primary top inputs (RMB Price, CBM, Packaging)
+         */
+        function resetPrimaryInputs() {
+            document.getElementById('rmbPriceInput').value = '';
+
+            document.getElementById('lengthInput').value = '';
+            document.getElementById('widthInput').value = '';
+            document.getElementById('heightInput').value = '';
+            document.getElementById('fullCbmInput').value = '';
+
+            document.getElementById('packagingInput').value = '1';
+
+            calculate();
+            showToast("تم تصفير الخانات الرئيسية بنجاح!");
+        }
+
+        /**
+         * Copies summary text to clipboard
+         */
+        function copySummary() {
+            const finalDinar = document.getElementById('finalCostDinar').innerText;
+            const rmbPrice = document.getElementById('rmbPriceInput').value || '0';
+            const cbm = document.getElementById('calculatedCbmVal').innerText;
+            const packaging = document.getElementById('packagingInput').value || '1';
+            const shipUnit = document.getElementById('shippingCostPerUnit').innerText;
+
+            const textToCopy = 
+`📋 *تقرير حاسبة الشحن والمنتجات*:
+• سعر القطعة الأصلي: ${rmbPrice} RMB
+• الحجم (CBM): ${cbm} m³
+• التعبئة: ${packaging} قطعة
+• تكلفة الشحن للقطعة: ${shipUnit} RMB
+-----------------------------
+💰 *التكلفة النهائية للقطعة*: ${finalDinar} دينار`;
+
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            showToast("تم نسخ التقرير بنجاح!");
+        }
+
+        /**
+         * Helper Toast display
+         */
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = msg;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        window.onload = function() {
+            calculate();
+        };
+    </script>
+</body>
+</html>
