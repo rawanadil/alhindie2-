@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حاسبة تكاليف الشحن والمنتجات الاحترافية</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="alhinde.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,53 +66,72 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+
+        /* Watermark Background */
+        .watermark-card {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .watermark-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url('alhinde.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 70%;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 
 <body class="min-h-screen pb-12 pt-6 px-3 sm:px-6 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
 
     <div class="max-w-4xl mx-auto w-full space-y-6">
-        
-        <!-- Header Section -->
-        <header class="text-center space-y-2 relative">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold mb-1">
-                <i class="fa-solid fa-calculator"></i>
-                <span>النظام المالي المتقدم للشركات والتجار</span>
-            </div>
-            <h1 class="text-2xl sm:text-4xl font-black text-white tracking-wide">
-                حاسبة تكاليف الشحن والمنتجات <span class="text-amber-400 font-extrabold">(RMB / د.ع)</span>
-            </h1>
-            <p class="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto">
-                احسب تكاليف استيراد المنتجات باليوان الصيني، CBM، والنسب بالدينار بدقة ولحظياً.
-            </p>
-        </header>
 
         <!-- Main Card Container -->
         <main class="space-y-6">
 
-            <!-- 1. PRIMARY INPUTS SECTION -->
-            <div class="glass-panel rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden border-2 border-amber-500/30 glow-amber-box">
+            <!-- 1. PRIMARY INPUTS SECTION WITH CARD HEADER & WATERMARK -->
+            <div class="glass-panel watermark-card rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden border-2 border-amber-500/30 glow-amber-box">
                 <div class="absolute -top-12 -left-12 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 
-                <div class="flex items-center justify-between border-b border-slate-700/60 pb-3 mb-5">
-                    <div class="flex items-center gap-2">
-                        <span class="flex h-3 w-3 relative">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
-                        </span>
-                        <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                            <i class="fa-solid fa-star text-amber-400"></i>
-                            المدخلات الرئيسية المتغيرة
-                        </h2>
+                <!-- Brand Visual Header inside Card -->
+                <div class="flex items-center justify-between gap-4 pb-4 border-b border-slate-700/60 mb-5">
+                    <div class="flex items-center gap-3">
+                        <img src="alhinde.jpg" alt="Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-2xl border border-sky-400/30 shadow-md shrink-0">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h1 class="text-base sm:text-xl font-black text-white">حاسبة تكاليف الشحن والمنتجات</h1>
+                                <span class="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0">v2.0</span>
+                            </div>
+                            <p class="text-slate-400 text-xs mt-0.5">النظام المالي المتقدم لاحتساب الاستيراد والتسعير بدقة</p>
+                        </div>
                     </div>
 
                     <!-- Reset Button for Primary Inputs Only -->
                     <button onclick="resetPrimaryInputs()" 
                             title="تصفير سعر القطعة، CBM والتعبئة فقط"
-                            class="group bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 hover:scale-105 active:scale-95 shadow-md">
+                            class="group bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 hover:scale-105 active:scale-95 shadow-md shrink-0">
                         <i class="fa-solid fa-rotate-right transition-transform group-hover:-rotate-180 duration-500"></i>
-                        <span>تصفير الخانات الرئيسية</span>
+                        <span class="hidden sm:inline">تصفير الخانات الرئيسية</span>
+                        <span class="sm:hidden">تصفير</span>
                     </button>
+                </div>
+
+                <!-- Section Sub-Header -->
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="flex h-2.5 w-2.5 relative">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                    </span>
+                    <h2 class="text-xs sm:text-sm font-bold text-slate-300 flex items-center gap-1.5">
+                        <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                        المدخلات الرئيسية المتغيرة
+                    </h2>
                 </div>
 
                 <!-- Grid for Prominent Primary Top Inputs -->
@@ -217,16 +238,31 @@
                     </button>
                 </div>
 
-                <!-- Primary Highlight Card (Dinar Final Cost) -->
-                <div class="bg-gradient-to-br from-amber-500/20 via-slate-900 to-slate-950 rounded-3xl p-6 border-2 border-amber-500/60 shadow-2xl relative overflow-hidden text-center glow-amber-box">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
-                    <span class="text-xs sm:text-sm font-extrabold text-amber-400 uppercase tracking-widest block mb-1">التكلفة النهائية للقطعة الواحدة</span>
-                    <div class="text-3xl sm:text-5xl font-black text-white tracking-tight my-2">
-                        <span id="finalCostDinar">0</span> <span class="text-amber-400 text-xl sm:text-3xl font-bold">د.ع</span>
+                <!-- Primary Highlights: Dinar & Dollar Cost Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Dinar Final Cost Card -->
+                    <div class="bg-gradient-to-br from-amber-500/20 via-slate-900 to-slate-950 rounded-3xl p-6 border-2 border-amber-500/60 shadow-2xl relative overflow-hidden text-center glow-amber-box flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                        <span class="text-xs sm:text-sm font-extrabold text-amber-400 uppercase tracking-widest block mb-1">التكلفة النهائية للقطعة (بالدينار)</span>
+                        <div class="text-3xl sm:text-5xl font-black text-white tracking-tight my-3">
+                            <span id="finalCostDinar">0</span> <span class="text-amber-400 text-xl sm:text-3xl font-bold">د.ع</span>
+                        </div>
+                        <p class="text-slate-400 text-xs max-w-md mx-auto">
+                            التكلفة الشاملة محولة للدينار العراقي
+                        </p>
                     </div>
-                    <p class="text-slate-400 text-xs max-w-md mx-auto mt-1">
-                        تعتمد على المعادلة المباشرة المحددة بدقة محولة للدينار.
-                    </p>
+
+                    <!-- Dollar Final Cost Card -->
+                    <div class="bg-gradient-to-br from-emerald-500/20 via-slate-900 to-slate-950 rounded-3xl p-6 border-2 border-emerald-500/60 shadow-2xl relative overflow-hidden text-center flex flex-col justify-between">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                        <span class="text-xs sm:text-sm font-extrabold text-emerald-400 uppercase tracking-widest block mb-1">التكلفة النهائية للقطعة (بالدولار)</span>
+                        <div class="text-3xl sm:text-5xl font-black text-white tracking-tight my-3">
+                            <span id="finalCostDollar">0.00</span> <span class="text-emerald-400 text-xl sm:text-3xl font-bold">$</span>
+                        </div>
+                        <p class="text-slate-400 text-xs max-w-md mx-auto">
+                            التكلفة بالدولار بناءً على سعر صرف RMB
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Breakdown Cards (2 Cards) -->
@@ -269,7 +305,7 @@
                         ملخص الشحنة الكاملة (لكل القطع - عدد <span id="summaryPackagingCount" class="text-white font-bold">1</span> قطعة):
                     </h4>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
                         <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
                             <span class="text-[11px] text-slate-400 block mb-0.5">إجمالي تكلفة الشحن</span>
                             <span class="text-sm font-bold text-sky-400" id="batchTotalShipping">0.00 RMB</span>
@@ -280,7 +316,12 @@
                             <span class="text-sm font-bold text-amber-300" id="batchTotalProductCost">0.00 RMB</span>
                         </div>
 
-                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800 col-span-2 sm:col-span-1">
+                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[11px] text-slate-400 block mb-0.5">الإجمالي الكلي بالدولار</span>
+                            <span class="text-sm font-bold text-emerald-300" id="batchTotalDollar">0.00 $</span>
+                        </div>
+
+                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
                             <span class="text-[11px] text-slate-400 block mb-0.5">الإجمالي الكلي بالدينار</span>
                             <span class="text-sm font-bold text-purple-300" id="batchTotalDinar">0 د.ع</span>
                         </div>
@@ -289,7 +330,7 @@
 
             </div>
 
-            <!-- 3. RATES AND FREIGHT SETTINGS SECTION -->
+            <!-- 3. RATES AND FREIGHT SETTINGS SECTION (PLACEHOLDERS ONLY) -->
             <div class="glass-panel rounded-3xl p-4 sm:p-6 shadow-xl space-y-4">
                 <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
                     <i class="fa-solid fa-sliders text-slate-400"></i>
@@ -309,13 +350,13 @@
                         </div>
                     </div>
 
-                    <!-- RMB Tariff Rate (سعر تصريف RMB) -->
+                    <!-- RMB Tariff Rate -->
                     <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
                         <label class="block text-slate-400 text-xs font-semibold mb-1">
                             سعر تصريف RMB
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbTariffRateInput" step="any" placeholder="1" value="1" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbTariffRateInput" step="any" placeholder="1" oninput="calculate()"
                                 class="w-full bg-slate-950 text-amber-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
@@ -335,10 +376,10 @@
                     <!-- RMB Exchange Rate -->
                     <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
                         <label class="block text-slate-400 text-xs font-semibold mb-1">
-                            سعر صرف 
+                            سعر صرف RMB
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbExchangeRateInput" step="any" placeholder="7.1" value="7.1" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbExchangeRateInput" step="any" placeholder="7.1" oninput="calculate()"
                                 class="w-full bg-slate-950 text-sky-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
@@ -349,7 +390,7 @@
                             سعر تصريف الدينار
                         </label>
                         <div class="relative">
-                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="dinarExchangeRateInput" step="any" placeholder="1500" value="1500" oninput="calculate()"
+                            <input type="number" inputmode="decimal" pattern="[0-9]*" id="dinarExchangeRateInput" step="any" placeholder="1500" oninput="calculate()"
                                 class="w-full bg-slate-950 text-purple-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
@@ -406,6 +447,16 @@
         }
 
         /**
+         * Helper: Returns input value or fallback placeholder value
+         */
+        function getInputValue(id, fallback) {
+            const el = document.getElementById(id);
+            if (!el) return fallback;
+            const val = parseFloat(el.value);
+            return !isNaN(val) ? val : fallback;
+        }
+
+        /**
          * Real-time Main Calculation Logic
          */
         function calculate() {
@@ -424,15 +475,15 @@
                 calculatedCbm = parseFloat(document.getElementById('fullCbmInput').value) || 0;
             }
 
-            // Display CBM Preview
+            // Display CBM Preview (English numbers)
             document.getElementById('calculatedCbmVal').innerText = calculatedCbm.toFixed(4);
 
-            // Fetch Rates and Settings
-            const meterPrice = parseFloat(document.getElementById('meterPriceInput').value) || 0;
-            const rmbTariffRate = parseFloat(document.getElementById('rmbTariffRateInput').value) || 1;
-            const profitPercent = parseFloat(document.getElementById('profitPercentInput').value) || 0;
-            const rmbExchangeRate = parseFloat(document.getElementById('rmbExchangeRateInput').value) || 1;
-            const dinarExchangeRate = parseFloat(document.getElementById('dinarExchangeRateInput').value) || 0;
+            // Fetch Rates and Settings (uses fallback from placeholder if empty)
+            const meterPrice = getInputValue('meterPriceInput', 0);
+            const rmbTariffRate = getInputValue('rmbTariffRateInput', 1);
+            const profitPercent = getInputValue('profitPercentInput', 0);
+            const rmbExchangeRate = getInputValue('rmbExchangeRateInput', 7.1);
+            const dinarExchangeRate = getInputValue('dinarExchangeRateInput', 1500);
 
             const validPackaging = packaging > 0 ? packaging : 1;
 
@@ -440,28 +491,34 @@
             const totalShipmentShippingCost = meterPrice * calculatedCbm;
             const shippingCostPerUnit = totalShipmentShippingCost / validPackaging;
 
-            // 2. تطبيق المعادلة المطلوبة:
-            // ((تكلفة كل قطعة شحن * سعر التصريف RMB) + سعر القطعة RMB + نسبة الربح) / سعر الصرف RMB * سعر تصريف الدينار
+            // 2. تطبيق المعادلة
             const shipWithTariff = shippingCostPerUnit * rmbTariffRate;
             const subtotalRmb = shipWithTariff + rmbPrice + profitPercent;
 
+            let finalDollarCost = 0;
             let finalDinarCost = 0;
+
             if (rmbExchangeRate > 0) {
-                finalDinarCost = (subtotalRmb / rmbExchangeRate) * dinarExchangeRate;
+                finalDollarCost = subtotalRmb / rmbExchangeRate;
+                finalDinarCost = finalDollarCost * dinarExchangeRate;
             }
 
-            // Render Output Values
+            // Render Output Values with English numbers
             document.getElementById('shippingCostPerUnit').innerText = shippingCostPerUnit.toFixed(2);
             document.getElementById('shipWithTariffCost').innerText = shipWithTariff.toFixed(2);
-            document.getElementById('finalCostDinar').innerText = Math.round(finalDinarCost).toLocaleString('ar-IQ');
+            document.getElementById('finalCostDinar').innerText = Math.round(finalDinarCost).toLocaleString('en-US');
+            document.getElementById('finalCostDollar').innerText = finalDollarCost.toFixed(2);
 
             // Render Batch Totals
             document.getElementById('summaryPackagingCount').innerText = validPackaging;
             document.getElementById('batchTotalShipping').innerText = totalShipmentShippingCost.toFixed(2) + " RMB";
             document.getElementById('batchTotalProductCost').innerText = (rmbPrice * validPackaging).toFixed(2) + " RMB";
             
+            const batchTotalDollarVal = finalDollarCost * validPackaging;
             const batchTotalDinarVal = finalDinarCost * validPackaging;
-            document.getElementById('batchTotalDinar').innerText = Math.round(batchTotalDinarVal).toLocaleString('ar-IQ') + " د.ع";
+
+            document.getElementById('batchTotalDollar').innerText = batchTotalDollarVal.toFixed(2) + " $";
+            document.getElementById('batchTotalDinar').innerText = Math.round(batchTotalDinarVal).toLocaleString('en-US') + " د.ع";
         }
 
         /**
@@ -486,6 +543,7 @@
          */
         function copySummary() {
             const finalDinar = document.getElementById('finalCostDinar').innerText;
+            const finalDollar = document.getElementById('finalCostDollar').innerText;
             const rmbPrice = document.getElementById('rmbPriceInput').value || '0';
             const cbm = document.getElementById('calculatedCbmVal').innerText;
             const packaging = document.getElementById('packagingInput').value || '1';
@@ -498,7 +556,8 @@
 • التعبئة: ${packaging} قطعة
 • تكلفة الشحن للقطعة: ${shipUnit} RMB
 -----------------------------
-💰 *التكلفة النهائية للقطعة*: ${finalDinar} دينار`;
+💵 *التكلفة بالدولار*: ${finalDollar} $
+💰 *التكلفة النهائية بالدينار*: ${finalDinar} د.ع`;
 
             const tempTextArea = document.createElement('textarea');
             tempTextArea.value = textToCopy;
@@ -529,7 +588,6 @@
             calculate();
         };
 
-
         /* =========================
            AUTO MOVE TO NEXT INPUT
            ========================= */
@@ -538,39 +596,27 @@
             document.getElementById('meterPriceInput'),
             document.getElementById('rmbTariffRateInput'),
             document.getElementById('profitPercentInput'),
-            document.getElementById('rmbExchangeRateInput')
+            document.getElementById('rmbExchangeRateInput'),
+            document.getElementById('dinarExchangeRateInput')
         ];
 
         inputs.forEach((input, index) => {
-
+            if (!input) return;
             input.setAttribute(
                 'enterkeyhint',
                 index < inputs.length - 1 ? 'next' : 'done'
             );
 
             input.addEventListener('keydown', function (event) {
-
-                if (
-                    event.key === 'Enter' ||
-                    event.keyCode === 13
-                ) {
-
+                if (event.key === 'Enter' || event.keyCode === 13) {
                     event.preventDefault();
-
                     if (index < inputs.length - 1) {
-
                         inputs[index + 1].focus();
-
                     } else {
-
                         this.blur();
-
                     }
-
                 }
-
             });
-
         });
     </script>
 </body>
