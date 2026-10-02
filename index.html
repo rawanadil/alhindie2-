@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة تكاليف الشحن والمنتجات الاحترافية</title>
+    <title>Al-Hindi Home | مجموعة الهندي التجارية</title>
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="alhinde.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -88,42 +88,39 @@
     </style>
 </head>
 
-<body class="min-h-screen pb-12 pt-6 px-3 sm:px-6 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+<body class="min-h-screen pb-12 pt-3 sm:pt-6 px-2.5 sm:px-6 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
 
-    <div class="max-w-4xl mx-auto w-full space-y-6">
+    <div class="max-w-4xl mx-auto w-full space-y-4 sm:space-y-6">
 
         <!-- Main Card Container -->
-        <main class="space-y-6">
+        <main class="space-y-4 sm:space-y-6">
 
             <!-- 1. PRIMARY INPUTS SECTION WITH CARD HEADER & WATERMARK -->
-            <div class="glass-panel watermark-card rounded-3xl p-4 sm:p-6 shadow-2xl relative overflow-hidden border-2 border-amber-500/30 glow-amber-box">
+            <div class="glass-panel watermark-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 shadow-2xl relative overflow-hidden border-2 border-amber-500/30 glow-amber-box">
                 <div class="absolute -top-12 -left-12 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 
                 <!-- Brand Visual Header inside Card -->
-                <div class="flex items-center justify-between gap-4 pb-4 border-b border-slate-700/60 mb-5">
-                    <div class="flex items-center gap-3">
-                        <img src="alhinde.jpg" alt="Logo" class="w-12 h-12 sm:w-14 sm:h-14 object-cover rounded-2xl border border-sky-400/30 shadow-md shrink-0">
+                <div class="flex items-center justify-between gap-3 pb-3 border-b border-slate-700/60 mb-3 sm:mb-5">
+                    <div class="flex items-center gap-2.5 sm:gap-3">
+                        <img src="alhinde.jpg" alt="Logo" class="w-10 h-10 sm:w-13 sm:h-13 object-cover rounded-xl sm:rounded-2xl border border-sky-400/30 shadow-md shrink-0">
                         <div>
-                            <div class="flex items-center gap-2">
-                                <h1 class="text-base sm:text-xl font-black text-white">حاسبة تكاليف الشحن والمنتجات</h1>
-                                <span class="bg-amber-500/20 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0">v2.0</span>
-                            </div>
-                            <p class="text-slate-400 text-xs mt-0.5">النظام المالي المتقدم لاحتساب الاستيراد والتسعير بدقة</p>
+                            <h1 class="text-sm sm:text-lg font-black text-white tracking-wide">
+                                Al-Hindi Home | مجموعة الهندي التجارية
+                            </h1>
                         </div>
                     </div>
 
-                    <!-- Reset Button for Primary Inputs Only -->
+                    <!-- Enlarged & Optimized Reset Button -->
                     <button onclick="resetPrimaryInputs()" 
                             title="تصفير سعر القطعة، CBM والتعبئة فقط"
-                            class="group bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 hover:scale-105 active:scale-95 shadow-md shrink-0">
-                        <i class="fa-solid fa-rotate-right transition-transform group-hover:-rotate-180 duration-500"></i>
-                        <span class="hidden sm:inline">تصفير الخانات الرئيسية</span>
-                        <span class="sm:hidden">تصفير</span>
+                            class="group bg-rose-500/15 hover:bg-rose-500/25 text-rose-400 border border-rose-500/40 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 flex items-center gap-2 hover:scale-105 active:scale-95 shadow-lg shrink-0">
+                        <i class="fa-solid fa-rotate-right text-sm transition-transform group-hover:-rotate-180 duration-500"></i>
+                        <span>تصفير</span>
                     </button>
                 </div>
 
                 <!-- Section Sub-Header -->
-                <div class="flex items-center gap-2 mb-4">
+                <div class="flex items-center gap-2 mb-3">
                     <span class="flex h-2.5 w-2.5 relative">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                       <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
@@ -135,58 +132,58 @@
                 </div>
 
                 <!-- Grid for Prominent Primary Top Inputs -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-5">
                     
                     <!-- 1. RMB Product Price -->
-                    <div class="bg-slate-900/90 rounded-2xl p-4 border border-amber-500/40 glow-amber-focus transition-all">
-                        <label class="block text-amber-300 font-bold text-sm mb-2 flex items-center justify-between">
+                    <div class="bg-slate-900/90 rounded-2xl p-3 sm:p-4 border border-amber-500/40 glow-amber-focus transition-all">
+                        <label class="block text-amber-300 font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center justify-between">
                             <span><i class="fa-solid fa-tag text-amber-400 ml-1.5"></i>سعر القطعة (RMB)</span>
                             <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">إجباري</span>
                         </label>
                         <div class="relative">
                             <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbPriceInput" step="any" min="0" placeholder="0.00" oninput="calculate()"
-                                class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
+                                class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-2.5 sm:py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
                             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold pointer-events-none">¥</span>
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-2 text-center">السعر الأصلي للقطعة الواحدة باليوان الصيني</p>
+                        <p class="text-[10px] sm:text-[11px] text-slate-400 mt-1.5 sm:mt-2 text-center">السعر الأصلي للقطعة الواحدة باليوان الصيني</p>
                     </div>
 
                     <!-- 2. CBM Calculator Section -->
-                    <div class="bg-slate-900/90 rounded-2xl p-4 border border-amber-500/40 glow-amber-focus transition-all flex flex-col justify-between">
+                    <div class="bg-slate-900/90 rounded-2xl p-3 sm:p-4 border border-amber-500/40 glow-amber-focus transition-all flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <label class="text-amber-300 font-bold text-sm flex items-center gap-1.5">
+                            <div class="flex items-center justify-between mb-1.5 sm:mb-2">
+                                <label class="text-amber-300 font-bold text-xs sm:text-sm flex items-center gap-1.5">
                                     <i class="fa-solid fa-cube text-amber-400"></i>
                                     <span>الحجم المكعب (CBM)</span>
                                 </label>
 
                                 <!-- Toggle Mode Button -->
                                 <div class="bg-slate-950 p-1 rounded-xl border border-slate-800 flex text-[10px]">
-                                    <button id="toggleDimBtn" onclick="toggleCbmMode('dim')" class="px-2 py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950">أبعاد</button>
-                                    <button id="toggleDirectBtn" onclick="toggleCbmMode('direct')" class="px-2 py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all">مباشر</button>
+                                    <button id="toggleDimBtn" onclick="toggleCbmMode('dim')" class="px-2 py-0.5 sm:py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950">أبعاد</button>
+                                    <button id="toggleDirectBtn" onclick="toggleCbmMode('direct')" class="px-2 py-0.5 sm:py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all">مباشر</button>
                                 </div>
                             </div>
 
                             <!-- Input Options Container -->
-                            <div class="relative overflow-hidden min-h-[58px] mt-2">
+                            <div class="relative overflow-hidden min-h-[54px] sm:min-h-[58px] mt-1.5">
                                 <!-- Option 1: 3 Inputs (طول × عرض × ارتفاع) -->
                                 <div id="dimInputs" class="grid grid-cols-3 gap-1.5 transition-slider transform translate-x-0 w-full">
                                     <div>
                                         <span class="text-[10px] text-slate-400 mb-0.5 block text-center">الطول (م)</span>
                                         <input type="number" inputmode="decimal" pattern="[0-9]*" id="lengthInput" step="any" placeholder="0.0" oninput="calculate()"
-                                            class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
+                                            class="w-full bg-slate-950 text-white font-bold text-xs sm:text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
 
                                     <div>
                                         <span class="text-[10px] text-slate-400 mb-0.5 block text-center">العرض (م)</span>
                                         <input type="number" inputmode="decimal" pattern="[0-9]*" id="widthInput" step="any" placeholder="0.0" oninput="calculate()"
-                                            class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
+                                            class="w-full bg-slate-950 text-white font-bold text-xs sm:text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
 
                                     <div>
                                         <span class="text-[10px] text-slate-400 mb-0.5 block text-center">الارتفاع (م)</span>
                                         <input type="number" inputmode="decimal" pattern="[0-9]*" id="heightInput" step="any" placeholder="0.0" oninput="calculate()"
-                                            class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
+                                            class="w-full bg-slate-950 text-white font-bold text-xs sm:text-sm rounded-xl p-2 text-center border border-slate-700 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
                                 </div>
 
@@ -194,7 +191,7 @@
                                 <div id="directInput" class="hidden transition-slider transform translate-x-full absolute inset-0 flex items-center justify-center">
                                     <div class="w-full">
                                         <input type="number" inputmode="decimal" pattern="[0-9]*" id="fullCbmInput" step="any" placeholder="أدخل إجمالي CBM المباشر (مثلاً 0.25)" oninput="calculate()"
-                                            class="w-full bg-slate-950 text-amber-300 font-extrabold text-base rounded-xl p-2.5 text-center border border-amber-500/50 focus:border-amber-500 focus:outline-none shadow-inner">
+                                            class="w-full bg-slate-950 text-amber-300 font-extrabold text-sm sm:text-base rounded-xl p-2 sm:p-2.5 text-center border border-amber-500/50 focus:border-amber-500 focus:outline-none shadow-inner">
                                     </div>
                                 </div>
                             </div>
@@ -203,31 +200,31 @@
                         <!-- CBM Preview Summary -->
                         <div class="mt-2 pt-2 border-t border-slate-800 flex justify-between items-center text-xs">
                             <span class="text-slate-400">إجمالي الحجم المحسوب:</span>
-                            <span class="font-bold text-amber-400 text-sm"><span id="calculatedCbmVal">0.0000</span> m³</span>
+                            <span class="font-bold text-amber-400 text-xs sm:text-sm"><span id="calculatedCbmVal">0.0000</span> m³</span>
                         </div>
                     </div>
 
                     <!-- 3. Packaging Quantity -->
-                    <div class="bg-slate-900/90 rounded-2xl p-4 border border-amber-500/40 glow-amber-focus transition-all">
-                        <label class="block text-amber-300 font-bold text-sm mb-2 flex items-center justify-between">
+                    <div class="bg-slate-900/90 rounded-2xl p-3 sm:p-4 border border-amber-500/40 glow-amber-focus transition-all">
+                        <label class="block text-amber-300 font-bold text-xs sm:text-sm mb-1.5 sm:mb-2 flex items-center justify-between">
                             <span><i class="fa-solid fa-boxes-packing text-amber-400 ml-1.5"></i>التعبئة (عدد القطع)</span>
                             <span class="text-[10px] text-slate-400 bg-slate-800 px-2 py-0.5 rounded">إجباري</span>
                         </label>
                         <div class="relative">
                             <input type="number" inputmode="decimal" pattern="[0-9]*" id="packagingInput" step="1" min="1" placeholder="1" oninput="calculate()" value="1"
-                                class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
+                                class="w-full bg-slate-950 text-amber-400 font-extrabold text-xl sm:text-2xl rounded-xl py-2.5 sm:py-3 px-3 text-center border border-slate-700 focus:border-amber-500 focus:outline-none transition-all shadow-inner">
                             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold pointer-events-none">قطعة</span>
                         </div>
-                        <p class="text-[11px] text-slate-400 mt-2 text-center">عدد القطع الإجمالي المحتواة في هذا الحجم/الكرتون</p>
+                        <p class="text-[10px] sm:text-[11px] text-slate-400 mt-1.5 sm:mt-2 text-center">عدد القطع الإجمالي المحتواة في هذا الحجم/الكرتون</p>
                     </div>
 
                 </div>
             </div>
 
             <!-- 2. DIRECT RESULTS & FINAL COST SECTION -->
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4">
                 <div class="flex items-center justify-between">
-                    <h3 class="text-base font-extrabold text-white flex items-center gap-2">
+                    <h3 class="text-sm sm:text-base font-extrabold text-white flex items-center gap-2">
                         <i class="fa-solid fa-chart-pie text-amber-400"></i>
                         نتائج الحساب والتكلفة النهائية مباشرةً
                     </h3>
@@ -239,42 +236,42 @@
                 </div>
 
                 <!-- Primary Highlights: Dinar & Dollar Cost Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <!-- Dinar Final Cost Card -->
-                    <div class="bg-gradient-to-br from-amber-500/20 via-slate-900 to-slate-950 rounded-3xl p-6 border-2 border-amber-500/60 shadow-2xl relative overflow-hidden text-center glow-amber-box flex flex-col justify-between">
+                    <div class="bg-gradient-to-br from-amber-500/20 via-slate-900 to-slate-950 rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-2 border-amber-500/60 shadow-2xl relative overflow-hidden text-center glow-amber-box flex flex-col justify-between">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
                         <span class="text-xs sm:text-sm font-extrabold text-amber-400 uppercase tracking-widest block mb-1">التكلفة النهائية للقطعة (بالدينار)</span>
-                        <div class="text-3xl sm:text-5xl font-black text-white tracking-tight my-3">
-                            <span id="finalCostDinar">0</span> <span class="text-amber-400 text-xl sm:text-3xl font-bold">د.ع</span>
+                        <div class="text-2xl sm:text-5xl font-black text-white tracking-tight my-2 sm:my-3">
+                            <span id="finalCostDinar">0</span> <span class="text-amber-400 text-lg sm:text-3xl font-bold">د.ع</span>
                         </div>
-                        <p class="text-slate-400 text-xs max-w-md mx-auto">
+                        <p class="text-slate-400 text-[11px] sm:text-xs max-w-md mx-auto">
                             التكلفة الشاملة محولة للدينار العراقي
                         </p>
                     </div>
 
                     <!-- Dollar Final Cost Card -->
-                    <div class="bg-gradient-to-br from-emerald-500/20 via-slate-900 to-slate-950 rounded-3xl p-6 border-2 border-emerald-500/60 shadow-2xl relative overflow-hidden text-center flex flex-col justify-between">
+                    <div class="bg-gradient-to-br from-emerald-500/20 via-slate-900 to-slate-950 rounded-2xl sm:rounded-3xl p-4 sm:p-6 border-2 border-emerald-500/60 shadow-2xl relative overflow-hidden text-center flex flex-col justify-between">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
                         <span class="text-xs sm:text-sm font-extrabold text-emerald-400 uppercase tracking-widest block mb-1">التكلفة النهائية للقطعة (بالدولار)</span>
-                        <div class="text-3xl sm:text-5xl font-black text-white tracking-tight my-3">
-                            <span id="finalCostDollar">0.00</span> <span class="text-emerald-400 text-xl sm:text-3xl font-bold">$</span>
+                        <div class="text-2xl sm:text-5xl font-black text-white tracking-tight my-2 sm:my-3">
+                            <span id="finalCostDollar">0.00</span> <span class="text-emerald-400 text-lg sm:text-3xl font-bold">$</span>
                         </div>
-                        <p class="text-slate-400 text-xs max-w-md mx-auto">
+                        <p class="text-slate-400 text-[11px] sm:text-xs max-w-md mx-auto">
                             التكلفة بالدولار بناءً على سعر صرف RMB
                         </p>
                     </div>
                 </div>
 
                 <!-- Breakdown Cards (2 Cards) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     
                     <!-- Card 1: Unit Shipping Cost -->
-                    <div class="glass-panel p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div class="glass-panel p-3.5 sm:p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
                         <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
                             <span>تكلفة شحن القطعة الواحدة</span>
                             <i class="fa-solid fa-truck-fast text-sky-400"></i>
                         </div>
-                        <div class="text-xl font-black text-sky-400">
+                        <div class="text-lg sm:text-xl font-black text-sky-400">
                             <span id="shippingCostPerUnit">0.00</span> <span class="text-xs">RMB</span>
                         </div>
                         <div class="text-[10px] text-slate-500 mt-1">
@@ -283,12 +280,12 @@
                     </div>
 
                     <!-- Card 2: Shipping Cost after RMB Rate -->
-                    <div class="glass-panel p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                    <div class="glass-panel p-3.5 sm:p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
                         <div class="flex items-center justify-between text-slate-400 text-xs mb-2">
                             <span>تكلفة شحن القطعة × سعر التصريف</span>
                             <i class="fa-solid fa-coins text-amber-400"></i>
                         </div>
-                        <div class="text-xl font-black text-amber-300">
+                        <div class="text-lg sm:text-xl font-black text-amber-300">
                             <span id="shipWithTariffCost">0.00</span> <span class="text-xs">RMB</span>
                         </div>
                         <div class="text-[10px] text-slate-500 mt-1">
@@ -299,31 +296,31 @@
                 </div>
 
                 <!-- Batch / Full Shipment Summary Container -->
-                <div class="glass-panel rounded-2xl p-4 border border-slate-800/80">
-                    <h4 class="text-xs font-bold text-slate-400 mb-3 flex items-center gap-1.5">
+                <div class="glass-panel rounded-2xl p-3.5 sm:p-4 border border-slate-800/80">
+                    <h4 class="text-xs font-bold text-slate-400 mb-2.5 sm:mb-3 flex items-center gap-1.5">
                         <i class="fa-solid fa-boxes-stacked text-amber-400"></i>
                         ملخص الشحنة الكاملة (لكل القطع - عدد <span id="summaryPackagingCount" class="text-white font-bold">1</span> قطعة):
                     </h4>
 
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
-                            <span class="text-[11px] text-slate-400 block mb-0.5">إجمالي تكلفة الشحن</span>
-                            <span class="text-sm font-bold text-sky-400" id="batchTotalShipping">0.00 RMB</span>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 text-center">
+                        <div class="bg-slate-900/70 p-2 sm:p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[10px] sm:text-[11px] text-slate-400 block mb-0.5">إجمالي تكلفة الشحن</span>
+                            <span class="text-xs sm:text-sm font-bold text-sky-400" id="batchTotalShipping">0.00 RMB</span>
                         </div>
 
-                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
-                            <span class="text-[11px] text-slate-400 block mb-0.5">إجمالي شراء BATCH</span>
-                            <span class="text-sm font-bold text-amber-300" id="batchTotalProductCost">0.00 RMB</span>
+                        <div class="bg-slate-900/70 p-2 sm:p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[10px] sm:text-[11px] text-slate-400 block mb-0.5">إجمالي شراء BATCH</span>
+                            <span class="text-xs sm:text-sm font-bold text-amber-300" id="batchTotalProductCost">0.00 RMB</span>
                         </div>
 
-                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
-                            <span class="text-[11px] text-slate-400 block mb-0.5">الإجمالي الكلي بالدولار</span>
-                            <span class="text-sm font-bold text-emerald-300" id="batchTotalDollar">0.00 $</span>
+                        <div class="bg-slate-900/70 p-2 sm:p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[10px] sm:text-[11px] text-slate-400 block mb-0.5">الإجمالي الكلي بالدولار</span>
+                            <span class="text-xs sm:text-sm font-bold text-emerald-300" id="batchTotalDollar">0.00 $</span>
                         </div>
 
-                        <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
-                            <span class="text-[11px] text-slate-400 block mb-0.5">الإجمالي الكلي بالدينار</span>
-                            <span class="text-sm font-bold text-purple-300" id="batchTotalDinar">0 د.ع</span>
+                        <div class="bg-slate-900/70 p-2 sm:p-2.5 rounded-xl border border-slate-800">
+                            <span class="text-[10px] sm:text-[11px] text-slate-400 block mb-0.5">الإجمالي الكلي بالدينار</span>
+                            <span class="text-xs sm:text-sm font-bold text-purple-300" id="batchTotalDinar">0 د.ع</span>
                         </div>
                     </div>
                 </div>
@@ -331,67 +328,67 @@
             </div>
 
             <!-- 3. RATES AND FREIGHT SETTINGS SECTION (PLACEHOLDERS ONLY) -->
-            <div class="glass-panel rounded-3xl p-4 sm:p-6 shadow-xl space-y-4">
-                <div class="flex items-center gap-2 border-b border-slate-800 pb-3">
-                    <i class="fa-solid fa-sliders text-slate-400"></i>
-                    <h3 class="text-sm sm:text-base font-bold text-slate-200">إعدادات أسعار الصرف ونسبة الشحن والربح</h3>
+            <div class="glass-panel rounded-2xl sm:rounded-3xl p-3.5 sm:p-6 shadow-xl space-y-3 sm:space-y-4">
+                <div class="flex items-center gap-2 border-b border-slate-800 pb-2.5 sm:pb-3">
+                    <i class="fa-solid fa-sliders text-slate-400 text-xs sm:text-base"></i>
+                    <h3 class="text-xs sm:text-base font-bold text-slate-200">إعدادات أسعار الصرف ونسبة الشحن والربح</h3>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-2.5 sm:gap-4">
                     
                     <!-- Freight Rate per Meter -->
-                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
-                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                    <div class="bg-slate-900/60 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-[11px] sm:text-xs font-semibold mb-1">
                             سعر المتر (RMB)
                         </label>
                         <div class="relative">
                             <input type="number" inputmode="decimal" pattern="[0-9]*" id="meterPriceInput" step="any" placeholder="0" oninput="calculate()"
-                                class="w-full bg-slate-950 text-white font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                                class="w-full bg-slate-950 text-white font-bold text-xs sm:text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
 
                     <!-- RMB Tariff Rate -->
-                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
-                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                    <div class="bg-slate-900/60 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-[11px] sm:text-xs font-semibold mb-1">
                             سعر تصريف RMB
                         </label>
                         <div class="relative">
                             <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbTariffRateInput" step="any" placeholder="1" oninput="calculate()"
-                                class="w-full bg-slate-950 text-amber-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                                class="w-full bg-slate-950 text-amber-400 font-bold text-xs sm:text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
 
                     <!-- Profit Percentage -->
-                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
-                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                    <div class="bg-slate-900/60 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-[11px] sm:text-xs font-semibold mb-1">
                             نسبة الربح (%)
                         </label>
                         <div class="relative">
                             <input type="number" inputmode="decimal" pattern="[0-9]*" id="profitPercentInput" step="any" placeholder="0" oninput="calculate()"
-                                class="w-full bg-slate-950 text-emerald-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                                class="w-full bg-slate-950 text-emerald-400 font-bold text-xs sm:text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                             <span class="absolute left-2 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-bold">%</span>
                         </div>
                     </div>
 
                     <!-- RMB Exchange Rate -->
-                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
-                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                    <div class="bg-slate-900/60 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all">
+                        <label class="block text-slate-400 text-[11px] sm:text-xs font-semibold mb-1">
                             سعر صرف RMB
                         </label>
                         <div class="relative">
                             <input type="number" inputmode="decimal" pattern="[0-9]*" id="rmbExchangeRateInput" step="any" placeholder="7.1" oninput="calculate()"
-                                class="w-full bg-slate-950 text-sky-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                                class="w-full bg-slate-950 text-sky-400 font-bold text-xs sm:text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
 
                     <!-- Local Dinar Exchange Rate -->
-                    <div class="bg-slate-900/60 p-3 rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all col-span-2 md:col-span-1">
-                        <label class="block text-slate-400 text-xs font-semibold mb-1">
+                    <div class="bg-slate-900/60 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-slate-800 focus-within:border-slate-600 transition-all col-span-2 md:col-span-1">
+                        <label class="block text-slate-400 text-[11px] sm:text-xs font-semibold mb-1">
                             سعر تصريف الدينار
                         </label>
                         <div class="relative">
                             <input type="number" inputmode="decimal" pattern="[0-9]*" id="dinarExchangeRateInput" step="any" placeholder="1500" oninput="calculate()"
-                                class="w-full bg-slate-950 text-purple-400 font-bold text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
+                                class="w-full bg-slate-950 text-purple-400 font-bold text-xs sm:text-sm rounded-xl py-2 px-2 text-center border border-slate-800 focus:border-amber-500 focus:outline-none">
                         </div>
                     </div>
 
@@ -407,8 +404,8 @@
         </div>
 
         <!-- Footer -->
-        <footer class="text-center text-slate-600 text-xs pt-4 border-t border-slate-900">
-            <p>© 2026 حاسبة تكاليف الشحن والمنتجات - مصممة برمجياً بأعلى جودة لمتابعة حسابات التجار.</p>
+        <footer class="text-center text-slate-600 text-[11px] sm:text-xs pt-3 sm:pt-4 border-t border-slate-900">
+            <p>© 2026 Al-Hindi Home | مجموعة الهندي التجارية - جميع الحقوق محفوظة.</p>
         </footer>
 
     </div>
@@ -432,15 +429,15 @@
                 dimInputs.classList.add('translate-x-0');
                 directInput.classList.add('hidden', 'translate-x-full');
                 
-                toggleDimBtn.className = "px-2 py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950";
-                toggleDirectBtn.className = "px-2 py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all";
+                toggleDimBtn.className = "px-2 py-0.5 sm:py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950";
+                toggleDirectBtn.className = "px-2 py-0.5 sm:py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all";
             } else {
                 dimInputs.classList.add('hidden', 'translate-x-full');
                 directInput.classList.remove('hidden', 'translate-x-full');
                 directInput.classList.add('translate-x-0');
 
-                toggleDirectBtn.className = "px-2 py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950";
-                toggleDimBtn.className = "px-2 py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all";
+                toggleDirectBtn.className = "px-2 py-0.5 sm:py-1 rounded-lg font-bold transition-all bg-amber-500 text-slate-950";
+                toggleDimBtn.className = "px-2 py-0.5 sm:py-1 rounded-lg font-bold text-slate-400 hover:text-white transition-all";
             }
 
             calculate();
@@ -550,7 +547,7 @@
             const shipUnit = document.getElementById('shippingCostPerUnit').innerText;
 
             const textToCopy = 
-`📋 *تقرير حاسبة الشحن والمنتجات*:
+`📋 *تقرير Al-Hindi Home | مجموعة الهندي التجارية*:
 • سعر القطعة الأصلي: ${rmbPrice} RMB
 • الحجم (CBM): ${cbm} m³
 • التعبئة: ${packaging} قطعة
